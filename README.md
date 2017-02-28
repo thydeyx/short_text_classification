@@ -76,71 +76,14 @@
 
 通过实验数据表明THUCTC的短文本分类效果最好，但是训练时间远远高于其它模型；fastText分类精度较好，训练速度很快，使用简单，对英文的预测准确精度很高。
 
-### 4.数据收集 ###
 
-实验数据主要由两部分构成：
+### 4.一些相关的处理代码和数据 ###
 
-*1.已有数据集*
 
-已有数据集从网上已经公开的数据集中获得，本次实验选用的为已标注的wiki数据，训练集有56万，测试集有7W，在./data/train/test_english.csv中。
-
-格式：以逗号分隔。label,title,content
-
-| label | count |
-| ----- |:-----:|
-|Company|44998|
-|EducationalInstitution|45000|
-|Artist|45000|
-|Athlete|45000|
-|OfficeHolder|45000|
-|MeanOfTransportation|45000|
-|Building|44999|
-|NaturalPlace|45000|
-|Village|44999|
-|Animal|45000|
-|Plant|45000|
-|Album|44999|
-|Film|44999|
-|WrittenWork|45000|
-
-*2.抓取数据集*
-
-从今日头条抓取数据集，抓取代码在./src/get_data.py，数据量为97000文本的摘要、标题、标签、网址和相关的信息。共10类，每一类数量在1W左右。
-
-格式：json格式。title:标题, label:类别, abs:摘要
-
-| label | count |
-| ----- |:-----:|
-|fashion|5584|
-|finance|5234|
-|entertainment|11384|
-|car|10605|
-|sports|11130|
-|society|10405|
-|game|11736|
-|tech|16786|
-|military|8037|
-|history|6858|
-
-### 5.一些相关的处理代码和数据 ###
-
-*1.数据*
-
-	./data/
-	
-		./train_content_title.json (今日头条部分全文数据)
-	
-		./train_abs_title.json (今日头条全部摘要，标题，标注数据)
-	
-		./train_english.csv (wiki英文文本训练数据)
-	
-		./test_english.csv (wiki中文文本训练数据)
-
-*2.代码脚本*
+*1.代码脚本*
 
 	./src/
 		
-		./get_data.py (抓取今日头条，正更改为每日定时抓取)
 		
 		./fasttext/ (fasttext的部分实验代码)
 		
